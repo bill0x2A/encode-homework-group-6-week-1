@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import "dotenv/config";
-import * as ballotJson from "../../artifacts/contracts/Ballot.sol/Ballot.json";
-
+// eslint-disable-next-line node/no-missing-import
+import { checkBalance, saveDeploymentAddress, setupScripts } from "../helpers";
 
 function convertStringArrayToBytes32(array: string[]) {
   const bytes32Array = [];
@@ -12,21 +12,9 @@ function convertStringArrayToBytes32(array: string[]) {
 }
 
 async function main() {
-  const wallet =
-    process.env.MNEMONIC && process.env.MNEMONIC.length > 0
-      ? ethers.Wallet.fromMnemonic(process.env.MNEMONIC)
-      : new ethers.Wallet(process.env.PRIVATE_KEY);
-  console.log(`Using address ${wallet.address}`);
+  const { signer, ballotJson } = await setupScripts();
+  await checkBalance(signer);
 
-  const provider = ethers.providers.getDefaultProvider("ropsten");
-  const signer = wallet.connect(provider);
-  const balanceBN = await signer.getBalance();
-  const balance = Number(ethers.utils.formatEther(balanceBN));
-  console.log(`Wallet balance ${balance}`);
-
-  if (balance < 0.01) {
-    throw new Error("Not enough ether");
-  }
   console.log("Deploying Ballot contract");
   console.log("Proposals: ");
 
@@ -51,6 +39,14 @@ async function main() {
 
   console.log("Completed");
   console.log(`Contract deployed at ${ballotContract.address}`);
+
+  await saveDeploymentAddress(
+    __dirname,
+    "../../artifacts/contracts/Ballot.sol/Ballot.json",
+    ballotContract.address
+  );
+
+  console.log("Contract deployment address succesfully saved to artifacts");
 }
 
 main().catch((error) => {

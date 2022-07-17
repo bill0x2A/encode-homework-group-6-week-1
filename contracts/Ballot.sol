@@ -62,7 +62,7 @@ contract Ballot {
             "Only chairperson can give right to vote."
         );
         require(!voters[voter].voted, "The voter already voted.");
-        require(voters[voter].weight == 0);
+        require(voters[voter].weight == 0, "The voter already has a vote weight");
         voters[voter].weight = 1;
     }
 

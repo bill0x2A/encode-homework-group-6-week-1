@@ -1,6 +1,9 @@
 {
   "name": "lesson-4",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "description": "Lesson 4 for Encode Bootcamp July 2022",
   "main": "index.js",
   "license": "MIT",
