@@ -4,7 +4,7 @@ import { BigNumber, ethers } from "ethers";
 import { setupScripts } from "../helpers";
 
 async function main() {
-  const { ballotContract } = await setupScripts();
+  const { ballotContract } = await setupScripts();//got everything about the contract
 
   if (process.argv.length < 3) throw new Error("Proposal index missing");
   const proposalIndex = process.argv[2];
