@@ -6,6 +6,9 @@ const fs = require("fs");
 
 class ImportError extends Error {}
 
+// eslint-disable-next-line node/no-missing-import
+export { deployNewContract } from "./Ballot/deployment";
+
 export const loadJson = async (baseDirectory: string, jsonPath: string) => {
   try {
     const resolvedPath: string = path.resolve(baseDirectory, jsonPath);
@@ -39,7 +42,7 @@ export const saveDeploymentAddress = async (
   }
 };
 
-export const setupScripts = async () => {
+export const setupScripts = async (contractAddress?: string) => {
   const ballotJson: ethers.Contract = await loadJson(
     __dirname,
     "../artifacts/contracts/Ballot.sol/Ballot.json"
@@ -68,12 +71,9 @@ export const setupScripts = async () => {
   let ballotContract;
   if (ballotJson.address) {
     ballotContract = new ethers.Contract(
-      ballotJson.address,
+      contractAddress || ballotJson.address,
       ballotJson.abi,
       signer
-    );
-    console.log(
-      `Attached ballot contract interface to address ${ballotJson.address}`
     );
   }
   ballotContract = ballotContract as Ballot;

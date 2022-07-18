@@ -11,15 +11,15 @@ function convertStringArrayToBytes32(array: string[]) {
   return bytes32Array;
 }
 
-async function main() {
+export async function deployNewContract(
+  proposals = ["Proposal 1", "Proposal 2", "Proposal 3"]
+) {
   const { signer, ballotJson } = await setupScripts();
   await checkBalance(signer);
 
   console.log("Deploying Ballot contract");
   console.log("Proposals: ");
 
-  const proposals = process.argv.slice(2);
-  if (proposals.length < 2) throw new Error("Not enough proposals provided");
   proposals.forEach((element, index) => {
     console.log(`Proposal N. ${index + 1}: ${element}`);
   });
@@ -47,6 +47,12 @@ async function main() {
   );
 
   console.log("Contract deployment address succesfully saved to artifacts");
+
+  return ballotContract.address;
+}
+
+async function main() {
+  await deployNewContract();
 }
 
 main().catch((error) => {
