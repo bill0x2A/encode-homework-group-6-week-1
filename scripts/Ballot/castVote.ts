@@ -1,10 +1,12 @@
 import "dotenv/config";
 import { BigNumber, ethers } from "ethers";
 // eslint-disable-next-line node/no-missing-import
-import { setupScripts } from "../helpers";
+import { setupScripts, deployNewContract } from "../helpers";
+
 
 async function main() {
-  const { ballotContract } = await setupScripts();//got everything about the contract
+   const deployedAddress = await deployNewContract();
+  const { ballotContract } = await setupScripts(deployedAddress);//got everything about the contract
   
   if (process.argv.length < 3) throw new Error("Proposal index missing");
   const proposalIndex = process.argv[2];

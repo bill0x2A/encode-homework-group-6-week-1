@@ -4,18 +4,11 @@ import { BigNumber, ethers } from "ethers";
 import { setupScripts } from "../helpers";
 
 async function main() {
-  const { ballotContract } = await setupScripts();//got everything about the contract
-  
-  if (process.argv.length < 3) throw new Error("Proposal index missing");
- 
-  const chair = await ballotContract.chairperson();
-  const delegateToAddress = process.argv[2];
-  const delegateResult = await ballotContract.delegate(delegateToAddress);
-  
-  console.log("Awaiting confirmations");
-  console.log(`Transaction completed. Hash: ${delegateResult}`);
-}
-
+    const { ballotContract } = await setupScripts();
+    const name = await ballotContract.winnerName();
+    const decodedProposalName = ethers.utils.parseBytes32String(name);
+    console.log(`Name: ${decodedProposalName}`);
+  }
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
