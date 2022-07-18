@@ -3,12 +3,12 @@
   - [X] Deploy
   - [X] Query proposals
   - [X] Give vote right passing an address as input
-  - [ ] Cast a vote to a ballot passing contract address and proposal as input and using the wallet in environment
-  - [ ] Delegate my vote passing user address as input and using the wallet in environment
-  - [ ] Query voting result and print to console
+  - [X] Cast a vote to a ballot passing contract address and proposal as input and using the wallet in environment
+  - [X] Delegate my vote passing user address as input and using the wallet in environment
+  - [X] Query voting result and print to console
 - [X] Publish the project in Github
-- [ ] Run the scripts with a set of proposals, cast and delegate votes and inspect results
-- [ ] Write a report detailing the addresses, transaction hashes, description of the operation script being executed and console output from script execution for each step (Deployment, giving voting rights, casting/delegating and querying results).
+- [X] Run the scripts with a set of proposals, cast and delegate votes and inspect results
+- [X] Write a report detailing the addresses, transaction hashes, description of the operation script being executed and console output from script execution for each step (Deployment, giving voting rights, casting/delegating and querying results).
 - [ ] (Extra) Use TDD methodology
 
 # Report
@@ -28,18 +28,6 @@ Proposal N. 1: Pro2
 Proposal N. 2: Pro3
 Proposal N. 3: Pro4
 Awaiting confirmations
-========= NOTICE =========
-Request-Rate Exceeded  (this message will not be repeated)
-
-The default API keys for each service are provided as a highly-throttled,
-community resource for low-traffic projects and early prototyping.
-
-While your application will continue to function, we highly recommended
-signing up for your own API keys to improve performance, increase your
-request rate/limit and enable other perks, such as metrics and advanced APIs.
-
-For more details: https://docs.ethers.io/api-keys/
-==========================
 Completed
 Contract deployed at 0x5Df9a6da1fdf82704bc9deb48ACa45cA19720aec
 Contract deployment address succesfully saved to artifacts
@@ -56,18 +44,6 @@ Using address 0xBD720874a79628D42BcCE5FCEBBF716239b561Ea
 Attached ballot contract interface to address 0x5Df9a6da1fdf82704bc9deb48ACa45cA19720aec
 Wallet balance 0.9944118279727551
 Giving right to vote to 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199
-========= NOTICE =========
-Request-Rate Exceeded  (this message will not be repeated)
-
-The default API keys for each service are provided as a highly-throttled,
-community resource for low-traffic projects and early prototyping.
-
-While your application will continue to function, we highly recommended
-signing up for your own API keys to improve performance, increase your
-request rate/limit and enable other perks, such as metrics and advanced APIs.
-
-For more details: https://docs.ethers.io/api-keys/
-==========================
 Awaiting confirmations
 Transaction completed. Hash: 0x51e863500303a1aadac290e642d000341b14bd466d526867cf3834972635c090
 * Etherscan Tx
@@ -81,18 +57,6 @@ ts-node scripts/Ballot/castVote.ts Pro2
 * Output: 
 Using address 0xBD720874a79628D42BcCE5FCEBBF716239b561Ea
 Attached ballot contract interface to address 0x5Df9a6da1fdf82704bc9deb48ACa45cA19720aec
-========= NOTICE =========
-Request-Rate Exceeded  (this message will not be repeated)
-
-The default API keys for each service are provided as a highly-throttled,
-community resource for low-traffic projects and early prototyping.
-
-While your application will continue to function, we highly recommended
-signing up for your own API keys to improve performance, increase your
-request rate/limit and enable other perks, such as metrics and advanced APIs.
-
-For more details: https://docs.ethers.io/api-keys/
-==========================
 {
   type: 2,
   chainId: 3,
